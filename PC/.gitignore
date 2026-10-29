@@ -1,0 +1,57 @@
+# Local runtime state and credentials
+/local_config/
+/data/
+*.token
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Generated builds, binaries, logs and archives
+build/
+/Console/board_deploy-*/
+*.exe
+*.dll
+*.so
+*.o
+*.obj
+*.a
+*.lib
+*.pdb
+*.ilk
+*.bit
+*.bin
+*.raw
+*.onnx
+*.npy
+*.npz
+*.mat
+*.tar.gz
+*.zip
+*.log
+*.pid
+*.tmp
+*.incoming
+
+# Historical hardware runs and generated stimuli; keep test source and generators
+/Console/tests/*/
+!/Console/tests/fixtures/
+!/Console/tests/fixtures/cov4/
+!/Console/tests/fixtures/cov4/packet_*.json
+/Console/tests/startup_*.json
+/Console/stimulus/*/
+!/Console/stimulus/matlab/
+
+# Desktop metadata
+.DS_Store
+Thumbs.db
+Desktop.ini

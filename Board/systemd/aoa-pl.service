@@ -1,0 +1,14 @@
+[Unit]
+Description=Prepare AOA V2.0 PL before network initialization
+After=local-fs.target
+Before=rc-local.service aoa-v2.service
+RequiresMountsFor=/root/aoa_system/V2.0 /lib/firmware
+
+[Service]
+Type=oneshot
+ExecStart=/root/aoa_system/V2.0/python.sh -u /root/aoa_system/V2.0/runtime/load_pl.py --ensure
+RemainAfterExit=yes
+TimeoutStartSec=45
+
+[Install]
+WantedBy=multi-user.target

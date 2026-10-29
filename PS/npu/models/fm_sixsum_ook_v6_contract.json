@@ -1,0 +1,73 @@
+{
+  "model_family": "sixsum_ook_v6",
+  "classes": [
+    "FM",
+    "AM",
+    "CW",
+    "noise",
+    "OOK"
+  ],
+  "output_shape": [
+    1,
+    5
+  ],
+  "logical_inputs_nchw": [
+    [
+      1,
+      4,
+      64,
+      640
+    ],
+    [
+      1,
+      4,
+      1,
+      640
+    ],
+    [
+      1,
+      4,
+      1,
+      48
+    ]
+  ],
+  "external_inputs_nhwc": [
+    [
+      1,
+      64,
+      640,
+      4
+    ],
+    [
+      1,
+      1,
+      640,
+      4
+    ],
+    [
+      1,
+      1,
+      48,
+      4
+    ]
+  ],
+  "raw_shape": [
+    4,
+    4096,
+    2
+  ],
+  "discard_per_round": 64,
+  "valid_iq_shape": [
+    4,
+    4032,
+    2
+  ],
+  "iq_divisor": 1048576,
+  "input_gain": 1,
+  "selected_precision": "INT8",
+  "source_export_sha256": "8df323aaf9fe8282ed9c23ca06e98e6374271cf8f03a1dc457479fdd9a68fd28",
+  "model_json_sha256": "b2f6c7ad030adb1d4a12176d7655c52cfcbeb7ccf0de4ccc237567c6d3ed2b7f",
+  "model_raw_sha256": "3b444d993aa56317fe73ae29fd6cc7318cee0bb92293fcf43176db45f39233da",
+  "params_bytes": 16834694,
+  "params_md5": "5eaa5cef66ec5f0d3f1b6a2874f4fb5e"
+}

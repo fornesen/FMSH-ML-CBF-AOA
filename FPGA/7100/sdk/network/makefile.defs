@@ -1,0 +1,5 @@
+# Managed-build extension: also compile the new source before an SDK refresh.
+# sort prevents duplicate objects after SDK regenerates src/subdir.mk.
+C_SRCS := $(sort $(C_SRCS) ../src/waveform_uart.c)
+OBJS := $(sort $(OBJS) ./src/waveform_uart.o)
+C_DEPS := $(sort $(C_DEPS) ./src/waveform_uart.d)

@@ -1,0 +1,4 @@
+Turbo colormap: Copyright 2019 Google LLC.
+The 256 RGB values are reproduced from the user's locally installed MATLAB R2024b turbo.m.
+Only the color table is used; MATLAB program code and runtime are not bundled.
+Original attribution in that file: https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html

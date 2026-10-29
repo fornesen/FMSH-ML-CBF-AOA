@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+ [bootloader] ../../assets/fpga7100/fsbl.elf
+ ../../assets/fpga7100/network_adc.bit
+ ../../assets/fpga7100/network.elf
+}

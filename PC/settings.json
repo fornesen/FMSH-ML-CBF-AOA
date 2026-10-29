@@ -1,0 +1,12 @@
+{
+  "listen_address": "0.0.0.0",
+  "http_port": 8775,
+  "http_listen": "127.0.0.1",
+  "fudan_ip": "192.168.10.51",
+  "fudan_telemetry_port": 9000,
+  "archive_port": 7012,
+  "archive_output": "data/hardware_7100/board",
+  "adc_save_dir": "data/adc_capture",
+  "board_ip": "192.168.10.50",
+  "board_port": 7
+}

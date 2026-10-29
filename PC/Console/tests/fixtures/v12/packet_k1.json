@@ -1,0 +1,246 @@
+{
+  "adc_bits": 16,
+  "adc_encoding": "offset-binary",
+  "analysis_ms": 0.0,
+  "antennas": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "baseband_sample_rate_hz": 25000000.0,
+  "beam_weights_verified": false,
+  "capture_last_round_ms": 0.0,
+  "capture_mode": "fft_file",
+  "capture_ms": 0.0,
+  "centres": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "compact_results": false,
+  "complete": true,
+  "covariance_concentration": 1.0,
+  "dds_hz": 12500000.0,
+  "direction_frames": 4,
+  "direction_method": "normalized_covariance_principal_vector",
+  "direction_round": 3,
+  "direction_rounds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "error": "",
+  "groups": [],
+  "guard_checked": false,
+  "guard_ok": false,
+  "handoff": "disabled",
+  "joint": {
+    "ambiguous": false,
+    "channels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "condition": 1.0,
+    "condition_definition": "Frobenius norm(A)*norm(pinv(A))",
+    "has_best": true,
+    "model": "far_field_ml",
+    "path_count": 1,
+    "paths": [
+      {
+        "active": true,
+        "amplitude_rms": 2.1200000000000006,
+        "angle_deg": -1.0,
+        "energy_share": 1.0,
+        "id": 0,
+        "relative_power_db": 0.0
+      }
+    ],
+    "profile": {
+      "angles_deg": [
+        -1.0,
+        0.0,
+        1.0
+      ],
+      "definition": "selected-order original exhaustive ML profile; board computed",
+      "relative_db": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale_definition": "10log10(min J / profiled J); numerical floor J/E=1e-12; clamp -80..0"
+    },
+    "raw_validation": {
+      "available": true,
+      "basis": "original_snapshots_fixed_angles",
+      "latest_residual_ratio": 2.1940106166034727e-32,
+      "passed": true,
+      "raw_residual_ratio": 5.151036178549994e-32
+    },
+    "reference_xy": [
+      0.0,
+      0.0
+    ],
+    "residual_ratio": 2.1940106166034727e-32,
+    "score_grid": {
+      "definition": "1-J/E; display quantization only",
+      "dimensions": 1,
+      "invalid_value": 255,
+      "order": "ascending_lexicographic",
+      "scale": 254,
+      "score_u8": "/v7+"
+    },
+    "selection": {
+      "accepted": true,
+      "amplitude_ratio": 0.1,
+      "dual_amplitudes": [],
+      "dual_angles_deg": [],
+      "dual_distance_deg": null,
+      "dual_tolerance_deg": 5.0,
+      "global_residual_ratio": 0.0,
+      "half_width_deg": 10.0,
+      "main_match": 1.0,
+      "method": "original_ml_top30_softmatch_v1.2",
+      "path_index": 0,
+      "range_deg": [
+        0.0,
+        0.0
+      ],
+      "residual_budget": 0.001,
+      "residual_gap_ratio": 0.0,
+      "selected_score": 1.0,
+      "single_angle_deg": 0.0,
+      "stages": [],
+      "status": "v12_original_ml_top30_softmatch"
+    }
+  },
+  "max_bearing_residual": 0.1,
+  "min_bin_power": 0.0,
+  "min_crossing_angle_deg": 1.0,
+  "npu_every": 1,
+  "pha_integrity": "slot_format_only_no_hardware_validity",
+  "phase_sign": 1,
+  "pl_version": 0,
+  "preprocessing": {
+    "adc_dc_applied": false,
+    "adc_dc_removed_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fft_payload_preprocessing": "unknown",
+    "ml_applied": false,
+    "ml_backend": "none",
+    "ml_processing_ms": 0.0,
+    "ml_retained_samples": 4096,
+    "ml_startup_samples": 0,
+    "ml_window": "none"
+  },
+  "processing_mode": "angle6",
+  "raw_validation": true,
+  "rf_hz": 445000000.0,
+  "rounds": 4,
+  "run_id": "independent_review",
+  "sample_rate_hz": 100000000.0,
+  "schema": 1,
+  "search": {
+    "count": 3,
+    "start": -1.0,
+    "step": 1.0
+  },
+  "selected_bins": [
+    11
+  ],
+  "seq": 1,
+  "session": "independent_review",
+  "source": "aoa",
+  "status": "ok",
+  "tcp_host": "192.168.10.50",
+  "tcp_port": 7,
+  "type": "aoa",
+  "v12": {
+    "joint": {
+      "angle_deg": -1.0,
+      "angles": [
+        -1.0
+      ],
+      "main_match": 1.0,
+      "model_paths": 1,
+      "path_index": 0,
+      "pool_counts": [
+        3,
+        0,
+        0
+      ],
+      "residual_ratio": 0.0,
+      "score": 1.0,
+      "secondary": {
+        "angle_deg": 45.0,
+        "display_only": true,
+        "error_deg": null,
+        "ml_angle_deg": null,
+        "score": null
+      },
+      "top30_rank": 1,
+      "valid": true
+    },
+    "localization": {
+      "candidates": [],
+      "reference_angle_deg": -1.0,
+      "selected_id": null
+    },
+    "scan": {
+      "angle_deg": -1.0,
+      "angles_deg": [
+        -1.0,
+        0.0,
+        1.0
+      ],
+      "coarse_angle_deg": -1.0,
+      "local_angle_deg": -1.0,
+      "model": "uniform_full_complex",
+      "relative_db": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "secondary_angle_deg": 45.0,
+      "valid": true
+    },
+    "version": "1.2"
+  },
+  "written_slots": 0
+}

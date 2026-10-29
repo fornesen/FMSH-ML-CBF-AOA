@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-25",
+  "python_contract_tests": {
+    "windows_python": "3.13",
+    "windows_note": "Linux PTY case verified on board",
+    "board_python": "3.8.10",
+    "passed": 21
+  },
+  "simulation": {
+    "seed": 20261025,
+    "points": 3,
+    "frames_per_point": 32,
+    "known_channel_gains": true,
+    "independent_batch_validation": true,
+    "leave_one_position_out": true,
+    "maximum_phase_error_deg": 0.05755906919709178,
+    "maximum_gain_error_db": 0.004910611155850314,
+    "accepted": true
+  },
+  "native_ps_offline": {
+    "mode": "offline_fft",
+    "direction_frames": 4,
+    "test_angle_deg": 31,
+    "group_angles_deg": [
+      [
+        31
+      ],
+      [
+        31
+      ]
+    ],
+    "group_residuals": [
+      3.0228286734534624e-07,
+      1.3723533963241463e-07
+    ]
+  },
+  "deployment": {
+    "root": "/root/aoa_system/V1.0/calibration",
+    "active_array_job_and_elf_unchanged": true,
+    "normal_service_same_session": true,
+    "live_three_position_calibration_performed": false
+  },
+  "dsh_review": {
+    "task_id": "aoa-three-point-calibration-review-20261025",
+    "session_id": "session-9d4e0c53-d320-4252-b229-aebad325d7ac",
+    "status": "completed_and_independently_checked",
+    "accepted": [
+      "inverse_complex_gain",
+      "raw_39_bit_contract",
+      "four_round_files",
+      "metadata_and_geometry_checks",
+      "spatial_validation_limits"
+    ],
+    "rejected": [
+      "initial_spherical_phase_sign_reversal",
+      "claim_known_single_source_gain_is_unidentifiable",
+      "Hann_neighbor_energy_as_multipath_detector",
+      "ignore_IQ_phase_sign_in_general"
+    ]
+  },
+  "terminal_regression": {
+    "date": "2026-10-25",
+    "linux_controlling_pty": true,
+    "queued_newlines_discarded_before_prompt": true,
+    "fresh_enter_required": true,
+    "terminal_eof_no_capture": true,
+    "bad_signal_first_batch_exits": true,
+    "active_array_job_elf_and_service_unchanged": true
+  },
+  "previous_single_tone_files": {
+    "calibrate.py": "09320fc75d13ac0c1cf00f004520789f1f7748ae674582f8d8519257fd2e5bd7",
+    "calibration_math.py": "0b91f0ca96b4497db5526bd49d0fd5508ec1a48fb3e50e733869908d03edcf59",
+    "test_calibration.py": "32958ab6f951b8146d6a5b928f2ba711e9217595fb44ea7ac3a31a2aa7ef2f73",
+    "README.txt": "530e8b44629725899dbe12444a64780678f54d45b8c56389dd2170765f46e0b2"
+  },
+  "files": {
+    "calibration_math.py": "0b91f0ca96b4497db5526bd49d0fd5508ec1a48fb3e50e733869908d03edcf59",
+    "delay_math.py": "0f7660220a4d37f0a6e5d46fdead81e3403e85c81ee3002f7d51f061db14020a",
+    "test_calibration.py": "80a5d250f1e5d44bc08b16ea6c8186637b0ed1e479e8de4fd115b4cd57f47a6b",
+    "test_delay.py": "1384ea944f44645473df85c2255f955cf8610b981395492c6836cc5cf7e27587",
+    "README.txt": "0ebd317bc8335bbca0faa93b3aee455129d2f3f74e00e3beb1269b2f972d74b3",
+    "calibrate.py": "fabd91db279e9273fde8a0e09cb53354fb8c09b15405acd5544065801212bd45"
+  },
+  "dual_tone": {
+    "date": "2026-10-25",
+    "default": true,
+    "points": [
+      "L",
+      "O",
+      "R"
+    ],
+    "default_y_m": 0,
+    "rf_frequencies_hz": [
+      425000000.0,
+      445000000.0
+    ],
+    "lo_hz": 433000000.0,
+    "reference_channel": 0,
+    "tests": {
+      "windows_total": 35,
+      "windows_passed": 34,
+      "windows_linux_pty_skipped": 1,
+      "board_python": "3.8.10",
+      "board_passed": 35
+    },
+    "simulation": {
+      "model": "RF propagation + RF delay + common LO + real mixer + IF delay; random common phase and amplitude",
+      "expected_delay_ns": [
+        0,
+        2,
+        -1,
+        3,
+        9,
+        -3
+      ],
+      "measured_delay_ns": [
+        -0.0,
+        2.0000490636013732,
+        -0.9992432536841218,
+        3.0002804370171283,
+        9.000247480108964,
+        -2.999732922532767
+      ],
+      "maximum_delay_error_ns": 0.0007567463158781873,
+      "note": "Synthetic numerical result, not physical measurement accuracy",
+      "unknown_if_phase_bias_test": true,
+      "modulo_50ns_test": true,
+      "heldout_and_leave_position_out": true
+    },
+    "runtime": {
+      "calibration_files_deployed": true,
+      "formal_array_job_elf_and_service_unchanged": true,
+      "code_backup": "/root/aoa_system/V1.0/data/calibration_code_backups/dualtone_20261025_1773381526",
+      "real_dual_tone_measurement_performed": false,
+      "relative_delay_is_record_only": true,
+      "operating_445_phase_directly_measured_when_user_runs": true
+    },
+    "dsh_review": {
+      "task_id": "aoa-dualtone-delay-review-20261025",
+      "session_id": "session-e6678bf6-b1f0-461d-b389-53c2c2da9d5b",
+      "status": "pending"
+    }
+  }
+}

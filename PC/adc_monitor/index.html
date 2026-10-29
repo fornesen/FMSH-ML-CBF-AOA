@@ -1,0 +1,174 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Six-channel ADC Monitor</title>
+<style>
+:root{font-family:"Segoe UI","Microsoft YaHei UI",sans-serif;color:#34404c;background:#f3f5f7;font-size:14px}*{box-sizing:border-box}body{max-width:1680px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}h1{font-size:24px;margin:0 0 7px;font-weight:650}p{margin:7px 0;color:#667684}button,select{background:white;border:1px solid #ccd5dd;border-radius:6px;padding:8px 12px;color:#34404c;font:inherit}button{cursor:pointer}button:hover{border-color:#4585b4}button:disabled{opacity:.5;cursor:default}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.status{margin:18px 0;padding:12px 16px;background:#fff;border-left:4px solid #8497a8;min-height:44px}.status.ok{border-color:#2e8c70}.status.bad{border-color:#d77948}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:white;border:1px solid #dfe5e9;border-radius:8px;padding:16px}.title{display:flex;justify-content:space-between;gap:10px;align-items:center}.title h2{margin:0;font-size:17px}.source{font-size:12px;color:#73818d}canvas{width:100%;height:190px;display:block;margin:10px 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;color:#78838d;font-size:12px}.stats b{display:block;color:#34404c;font:500 15px Consolas,monospace;margin-top:4px}.foot{margin-top:18px;font-size:12px;line-height:1.8;word-break:break-all}.muted{opacity:.45}.range{display:flex;align-items:center;gap:14px;margin-bottom:14px}.range input{width:240px;accent-color:#4986ad}@media(max-width:800px){body{padding:15px}.grid{grid-template-columns:1fr}.stats{gap:4px}.controls{gap:7px}}
+</style>
+<style>.spectrum{margin-top:18px}.spectrum canvas{height:260px}.spectrum .title{flex-wrap:wrap}.spectrum h2{color:#34404c}.spectrum .peak{font:500 13px Consolas,"Microsoft YaHei UI",monospace;color:#516675}.spectrum .foot{margin-bottom:0}.spectrum-meta{margin:12px 0 0;font-size:12px;color:#667684}</style>
+<header><div><h1>Six-channel ADC Monitor</h1><p>7100 六路原始采样 · 12 bit → 16 bit · 100 MS/s</p></div><div class="controls"><label>采样窗口 <select id="count"><option>512</option><option selected>2048</option><option>4096</option><option>16384</option></select></label><label>显示 <select id="encoding"><option value="biased12">0–4095（补码 + 2048）</option><option value="twos12">有符号补码</option><option value="raw12">网络原始码</option><option value="offset12">偏移码输入 → 有符号</option></select></label><label>纵轴 <select id="scale"><option value="shared">六路统一</option><option value="auto">各路自动</option><option value="fixed">固定满量程</option></select></label><button id="capture">暂停独立采集</button><button id="pause">暂停显示</button><button id="save" disabled>保存最新原始帧</button></div></header>
+<div id="status" class="status">等待 7100 数据…</div><div class="range"><span>窗口起点</span><input id="offset" type="range" min="0" max="14336" value="0" step="64"><span id="window">0–2047</span></div><main class="grid" id="grid"></main>
+<section class="card spectrum" id="spectrumPanel"><div class="title"><h2>单通道频谱</h2><div class="controls"><label>通道 <select id="fftChannel"><option value="0">CH0 · ADC1 / AD1</option><option value="1">CH1 · ADC1 / AD2</option><option value="2" selected>CH2 · ADC2 / AD1</option><option value="3">CH3 · ADC2 / AD2</option><option value="4">CH4 · ADC3 / AD1</option><option value="5">CH5 · ADC3 / AD2</option></select></label><span id="spectrumPeak" class="peak">谱峰：—</span></div></div><p class="spectrum-meta" id="spectrumMeta">等待完整采样帧…</p><canvas id="spectrumCanvas" aria-label="所选 ADC 通道的单边幅度频谱"></canvas><p class="foot">频谱按 ADC 补码原始数据计算，使用整帧 16384 点，与波形窗口长度无关；去直流、Hann 窗、单边幅度，以满量程正弦峰值为 0 dBFS。横轴为 ADC 输入频率，不是射频载频；此处处理仅用于电脑端观察，不修改采样数据。</p></section>
+<p class="foot" id="saved"></p><p class="foot">横轴为帧内采样时间；每帧 16384 点 / 通道，共 163.84 µs。网页按请求刷新，帧与帧之间不代表连续采样。当前 ADC 输出补码，7100 透传原始位；默认显示为偏移码 0～4095，理论零点为 2048（最高位翻转，等价于有符号值 + 2048）。波形与整帧统计同步转换，不去直流、不滤波、不换算电压；保存文件仍为原始网络数据。默认六路统一纵轴；各路自动会放大微小波动。</p>
+<script>
+const $ = s => document.querySelector(s);
+const colors = ['#447fa7','#d27a49','#409383','#9276b3','#bc7996','#9b8b44'];
+const encodingNames = {biased12:'0–4095（补码 + 2048，零点 2048）', twos12:'有符号补码', offset12:'偏移码输入 → 有符号', raw12:'网络原始码'};
+let paused = false, last = null, requestId = 0;
+
+for (let ch = 0; ch < 6; ch++) {
+  $('#grid').insertAdjacentHTML('beforeend', `<section class="card"><div class="title"><h2 style="color:${colors[ch]}">CH${ch}</h2><span class="source">ADC${Math.floor(ch/2)+1} · AD${ch%2+1}</span></div><canvas id="c${ch}"></canvas><div class="stats" id="s${ch}"><span>MIN<b>—</b></span><span>MAX<b>—</b></span><span>MEAN<b>—</b></span><span>AC RMS<b>—</b></span></div></section>`);
+}
+
+function bounds(stats, frame) {
+  const limits = ['raw12','biased12'].includes(frame.encoding) ? [0, 4095] : [-2048, 2047];
+  if ($('#scale').value === 'fixed' && frame.raw_12bit_valid) return limits;
+  let lo = Math.min(...stats.map(s => s.min)), hi = Math.max(...stats.map(s => s.max));
+  const pad = Math.max(2, (hi-lo)*.08);
+  lo -= pad; hi += pad;
+  if (frame.raw_12bit_valid) {
+    lo = Math.max(limits[0], lo); hi = Math.min(limits[1], hi);
+  }
+  return [lo, hi];
+}
+
+function plot(ch, values, stat, frame, sharedBounds) {
+  const c = $(`#c${ch}`), r = c.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+  c.width = Math.round(r.width*dpr); c.height = Math.round(r.height*dpr);
+  const g = c.getContext('2d'); g.scale(dpr, dpr);
+  const W=r.width, H=r.height, L=48, R=12, T=12, B=28, w=W-L-R, h=H-T-B;
+  // Shared bounds preserve amplitude differences; per-channel auto is an explicit choice.
+  const [lo, hi] = $('#scale').value === 'auto' ? bounds([stat], frame) : sharedBounds;
+  g.font = '11px Consolas,monospace'; g.textBaseline = 'middle';
+  for (let i=0; i<3; i++) {
+    const y=T+h*i/2;
+    g.strokeStyle='#e8edf0'; g.beginPath(); g.moveTo(L,y); g.lineTo(W-R,y); g.stroke();
+    g.fillStyle='#7b8791'; g.textAlign='right';
+    g.fillText(Math.round(hi-(hi-lo)*i/2), L-7, y);
+  }
+  for (let i=0; i<3; i++) {
+    const x=L+w*i/2;
+    g.textAlign=i===0?'left':i===2?'right':'center';
+    g.fillText(((frame.window_offset+(values.length-1)*i/2)/frame.sample_rate*1e6).toFixed(2)+' µs',x,H-10);
+  }
+  g.save(); g.beginPath(); g.rect(L,T,w,h); g.clip();
+  g.strokeStyle=colors[ch]; g.lineWidth=1.25; g.beginPath();
+  values.forEach((v,i) => {
+    const x=L+w*i/Math.max(1,values.length-1), y=T+h*(1-(v-lo)/(hi-lo));
+    i ? g.lineTo(x,y) : g.moveTo(x,y);
+  });
+  g.stroke(); g.restore();
+  $(`#s${ch}`).innerHTML=`<span>MIN<b>${stat.min}</b></span><span>MAX<b>${stat.max}</b></span><span>MEAN<b>${stat.mean.toFixed(2)}</b></span><span>AC RMS<b>${stat.ac_rms.toFixed(2)}</b></span>`;
+}
+
+function plotSpectrum(frame) {
+  const s=frame.spectrum, c=$('#spectrumCanvas'), r=c.getBoundingClientRect(), dpr=devicePixelRatio||1;
+  c.width=Math.round(r.width*dpr); c.height=Math.round(r.height*dpr);
+  const g=c.getContext('2d'); g.scale(dpr,dpr);
+  $('#spectrumPanel').classList.toggle('muted', frame.status==='disconnected');
+  if (!s) {
+    $('#spectrumPeak').textContent='谱峰：—';
+    $('#spectrumMeta').textContent=frame.status==='format_error'?'采样格式不符，暂停频谱计算。':'等待完整采样帧…';
+    return;
+  }
+  $('#spectrumMeta').textContent=`CH${s.channel} · 帧 ${s.sequence} · ${s.fft_size.toLocaleString()} 点 FFT · 频点间隔 ${(s.bin_hz/1000).toFixed(3)} kHz · Hann 窗 · 已去直流`;
+  $('#spectrumPeak').textContent=s.peak_hz===null?'谱峰：低于显示下限':`谱峰 ${(s.peak_hz/1e6).toFixed(6)} MHz · ${s.peak_dbfs.toFixed(2)} dBFS`;
+  const W=r.width,H=r.height,L=58,R=18,T=24,B=30,w=W-L-R,h=H-T-B;
+  const lo=-140, hi=Math.max(0,Math.ceil(Math.max(...s.amplitude_dbfs)/20)*20);
+  const yOf=v=>T+h*(hi-v)/(hi-lo);
+  g.font='11px Consolas,monospace'; g.textBaseline='middle';
+  for (let db=lo; db<=hi; db+=20) {
+    const y=yOf(db);
+    g.strokeStyle='#e8edf0'; g.beginPath(); g.moveTo(L,y); g.lineTo(W-R,y); g.stroke();
+    g.fillStyle='#7b8791'; g.textAlign='right'; g.fillText(db,L-8,y);
+  }
+  g.textAlign='left'; g.fillText('dBFS',L,T-13);
+  for (let i=0;i<=5;i++) {
+    const x=L+w*i/5;
+    g.strokeStyle='#eff2f4'; g.beginPath(); g.moveTo(x,T); g.lineTo(x,H-B); g.stroke();
+    g.textAlign=i===0?'left':i===5?'right':'center';
+    g.fillText((s.max_hz*i/5/1e6).toFixed(0)+' MHz',x,H-10);
+  }
+  g.save(); g.beginPath(); g.rect(L,T,w,h); g.clip();
+  g.strokeStyle=colors[s.channel]; g.lineWidth=1.2; g.beginPath();
+  s.amplitude_dbfs.forEach((db,i)=>{
+    const x=L+w*i/(s.amplitude_dbfs.length-1), y=yOf(db);
+    i?g.lineTo(x,y):g.moveTo(x,y);
+  });
+  g.stroke();
+  if (s.peak_hz!==null) {
+    const x=L+w*s.peak_hz/s.max_hz, y=yOf(s.peak_dbfs);
+    g.fillStyle=colors[s.channel]; g.beginPath(); g.arc(x,y,3,0,2*Math.PI); g.fill();
+  }
+  g.restore();
+}
+
+function render(f) {
+  last=f;
+  $("#capture").textContent=f.acquisition_enabled===false?"开始独立采集":"暂停独立采集";
+  const age=f.received_at?((Date.now()/1000)-f.received_at).toFixed(1):null, ok=f.status==='ok';
+  $('#status').className='status '+(ok?'ok':'bad');
+  $('#status').textContent=f.status==='paused'?'独立采集已暂停，7100可由复旦微使用；如需恢复独立查看，请先停止复旦微采集。':ok
+    ? `${f.board} · 帧 ${f.sequence} · ${f.frame_bytes.toLocaleString()} B · 接收 ${f.receive_ms} ms · ${age} 秒前 · 六路高 4 位均为 0 · 显示：${encodingNames[f.encoding]}`
+    : f.status==='format_error'
+      ? `采样格式不符：存在非零高 4 位，暂按原始字显示，请确认六路 12 bit ADC 工程。帧 ${f.sequence}`
+      : `${f.board} · ${f.error||'等待第一帧'}${age?' · 上一帧 '+age+' 秒前':''}`;
+  $('#grid').classList.toggle('muted', f.status==='disconnected');
+  $('#save').disabled=!f.channels.length;
+  $('#window').textContent=`${f.window_offset}–${f.window_offset+f.window_count-1}`;
+  if (f.channels.length) {
+    const sharedBounds=bounds(f.stats,f);
+    f.channels.forEach((v,ch) => plot(ch,v,f.stats[ch],f,sharedBounds));
+  }
+  plotSpectrum(f);
+}
+
+async function fetchFrame() {
+  const id=++requestId;
+  const q=new URLSearchParams({count:$('#count').value, offset:$('#offset').value, encoding:$('#encoding').value, fft_channel:$('#fftChannel').value});
+  try {
+    const r=await fetch('/api/frame?'+q);
+    if (!r.ok) throw Error('HTTP '+r.status);
+    const f=await r.json();
+    if (id===requestId) render(f);
+  } catch(e) {
+    if (id!==requestId) return;
+    $('#status').className='status bad';
+    $('#status').textContent='查看服务连接失败：'+e.message;
+    $('#grid').classList.add('muted');
+    $('#spectrumPanel').classList.add('muted');
+  }
+}
+
+async function refresh() {
+  if (!paused) await fetchFrame();
+  setTimeout(refresh,500);
+}
+$('#capture').onclick=async()=>{
+  try {
+    const r=await fetch('/api/capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:last?.acquisition_enabled===false})});
+    if(!r.ok)throw Error('采集开关请求失败');
+    await fetchFrame();
+  } catch(e) { $('#status').textContent=e.message; }
+};
+$('#pause').onclick=()=>{
+  paused=!paused;
+  $('#pause').textContent=paused?'继续显示':'暂停显示';
+  if (paused) ++requestId; else fetchFrame();
+};
+$('#scale').onchange=()=>{if(last) render(last)};
+$('#encoding').onchange=fetchFrame;
+$('#fftChannel').onchange=fetchFrame;
+$('#offset').onchange=fetchFrame;
+$('#count').onchange=()=>{
+  $('#offset').max=16384-Number($('#count').value);
+  if (Number($('#offset').value)>Number($('#offset').max)) $('#offset').value=$('#offset').max;
+  fetchFrame();
+};
+$('#save').onclick=async()=>{
+  try {
+    const r=await fetch('/api/save',{method:'POST'}), d=await r.json();
+    $('#saved').textContent=r.ok?`已保存第 ${d.sequence} 帧：${d.path} · SHA-256 ${d.sha256}`:'保存失败：'+d.error;
+  } catch(e) { $('#saved').textContent='保存失败：'+e.message; }
+};
+window.onresize=()=>{if(last) render(last)};
+refresh();
+</script></html>

@@ -1,0 +1,469 @@
+{
+  "adc_bits": 16,
+  "adc_encoding": "offset-binary",
+  "analysis_ms": 0.7494,
+  "antennas": [
+    [
+      -1.12,
+      0.03
+    ],
+    [
+      -0.83,
+      -0.04
+    ],
+    [
+      -0.44,
+      0.02
+    ],
+    [
+      0.47,
+      -0.02
+    ],
+    [
+      0.89,
+      0.01
+    ],
+    [
+      1.21,
+      0.05
+    ]
+  ],
+  "baseband_sample_rate_hz": 25000000.0,
+  "beam_weights_verified": false,
+  "capture_last_round_ms": 0.0,
+  "capture_mode": "fft_file",
+  "capture_ms": 0.0,
+  "centres": [
+    [
+      -0.7966666666666666,
+      0.003333333333333333
+    ],
+    [
+      0.8566666666666667,
+      0.013333333333333332
+    ]
+  ],
+  "compact_results": false,
+  "complete": true,
+  "covariance_concentration": 0.9945026121880134,
+  "dds_hz": 12500000.0,
+  "direction_frames": 4,
+  "direction_method": "normalized_covariance_principal_vector",
+  "direction_round": 3,
+  "direction_rounds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "error": "",
+  "groups": [
+    {
+      "ambiguous": false,
+      "channels": [
+        0,
+        1,
+        2
+      ],
+      "condition": 3.798171654546501,
+      "energy": 38.482162939104455,
+      "grid": {
+        "angles_deg": [
+          -60.0,
+          -48.0,
+          -36.0,
+          -24.0,
+          -12.0,
+          0.0,
+          12.0,
+          24.0,
+          36.0,
+          48.0,
+          60.0
+        ],
+        "invalid_u8": "AQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQ==",
+        "order": "theta1,theta2",
+        "score_definition": "clamp(1-J/E,0,1)",
+        "score_u8": "AE4/N0aR8+y5lIROAD5DXJ3x56BwWT8+AFl8tPLniEQpN0NZAKDO9vCSMApGXHygAOP6+slyNJGdtM7jAP3+89e18/Hy9vr9AP///fvs5+fw+v7/APv49LmgiJLJ8//7AOTWlHBEMHLX/fjkALaEWSkKNLX79Na2AA=="
+      },
+      "has_best": true,
+      "id": 0,
+      "paths": [
+        {
+          "active": true,
+          "amplitude_rms": 1.6260575399257173,
+          "angle_deg": 12.0,
+          "id": 0,
+          "relative_power_db": 0.0
+        },
+        {
+          "active": true,
+          "amplitude_rms": 1.2098016892389172,
+          "angle_deg": 24.0,
+          "id": 1,
+          "relative_power_db": -2.568434459353452
+        }
+      ],
+      "raw_validation": {
+        "available": true,
+        "basis": "original_snapshots_fixed_angles",
+        "latest_residual_ratio": 0.0004827299622096418,
+        "passed": true,
+        "raw_residual_ratio": 0.0004893554007442552
+      },
+      "residual_ratio": 0.00015257984314030683
+    },
+    {
+      "ambiguous": false,
+      "channels": [
+        3,
+        4,
+        5
+      ],
+      "condition": 3.603651818813721,
+      "energy": 81.21142529099424,
+      "grid": {
+        "angles_deg": [
+          -60.0,
+          -48.0,
+          -36.0,
+          -24.0,
+          -12.0,
+          0.0,
+          12.0,
+          24.0,
+          36.0,
+          48.0,
+          60.0
+        ],
+        "invalid_u8": "AQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQ==",
+        "order": "theta1,theta2",
+        "score_definition": "clamp(1-J/E,0,1)",
+        "score_u8": "AF05FRaB8PbZuJpdACwdJ3fp8MWkmjksADRTlerponRlFR00AIa+8uuLPykWJ1OGAN769bVWI4F3lb7eAP786cSd8Onq8vr+AP78+fX28Onr9fz+AP37+NnFoou16fz9AOziuKR0P1bE+fvsAMiammUpI531+OLIAA=="
+      },
+      "has_best": true,
+      "id": 1,
+      "paths": [
+        {
+          "active": true,
+          "amplitude_rms": 2.1205997631298743,
+          "angle_deg": 12.0,
+          "id": 0,
+          "relative_power_db": 0.0
+        },
+        {
+          "active": true,
+          "amplitude_rms": 2.1148920209940165,
+          "angle_deg": 24.0,
+          "id": 1,
+          "relative_power_db": -0.02341019688495871
+        }
+      ],
+      "raw_validation": {
+        "available": true,
+        "basis": "original_snapshots_fixed_angles",
+        "latest_residual_ratio": 0.002440543579106819,
+        "passed": true,
+        "raw_residual_ratio": 0.002369513214338745
+      },
+      "residual_ratio": 0.002184633274571907
+    }
+  ],
+  "guard_checked": false,
+  "guard_ok": false,
+  "handoff": "disabled",
+  "joint": {
+    "ambiguous": false,
+    "channels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "condition": 3.2976984105962024,
+    "condition_definition": "Frobenius norm(A)*norm(pinv(A))",
+    "has_best": true,
+    "model": "far_field_ml",
+    "path_count": 3,
+    "paths": [
+      {
+        "active": true,
+        "amplitude_rms": 0.8050761825252725,
+        "angle_deg": 0.0,
+        "energy_share": 0.07863061008259797,
+        "id": 0,
+        "relative_power_db": -8.352263274490483
+      },
+      {
+        "active": true,
+        "amplitude_rms": 2.105960117696012,
+        "angle_deg": 12.0,
+        "energy_share": 0.5380442230371076,
+        "id": 1,
+        "relative_power_db": 0.0
+      },
+      {
+        "active": true,
+        "amplitude_rms": 1.7775622666278195,
+        "angle_deg": 24.0,
+        "energy_share": 0.38332516688029444,
+        "id": 2,
+        "relative_power_db": -1.4725063933457994
+      }
+    ],
+    "profile": {
+      "angles_deg": [
+        -60.0,
+        -48.0,
+        -36.0,
+        -24.0,
+        -12.0,
+        0.0,
+        12.0,
+        24.0,
+        36.0,
+        48.0,
+        60.0
+      ],
+      "definition": "selected-order original exhaustive ML profile; board computed",
+      "relative_db": [
+        -2.7802909652538292,
+        -3.3631546769248244,
+        -3.5796981256782874,
+        -2.6719044241271313,
+        -2.32413397090335,
+        0.0,
+        0.0,
+        0.0,
+        -0.6688168121184562,
+        -3.4674202626720274,
+        -0.7521595496064768
+      ],
+      "scale_definition": "10log10(min J / profiled J); numerical floor J/E=1e-12; clamp -80..0"
+    },
+    "raw_validation": {
+      "available": true,
+      "basis": "original_snapshots_fixed_angles",
+      "latest_residual_ratio": 0.033688943166939246,
+      "passed": true,
+      "raw_residual_ratio": 0.03606940518675804
+    },
+    "reference_xy": [
+      0.03,
+      0.008333333333333333
+    ],
+    "residual_ratio": 0.03657932267732948,
+    "selection": {
+      "accepted": true,
+      "amplitude_ratio": 0.1,
+      "dual_amplitudes": [],
+      "dual_angles_deg": [],
+      "dual_distance_deg": 0.0,
+      "dual_tolerance_deg": 5.0,
+      "global_residual_ratio": 0.03657932267732969,
+      "half_width_deg": 10.0,
+      "main_match": 0.14877758951017153,
+      "method": "original_ml_top30_softmatch_v1.2",
+      "path_index": 1,
+      "range_deg": [
+        0.0,
+        0.0
+      ],
+      "residual_budget": 0.001,
+      "residual_gap_ratio": 0.0,
+      "selected_score": 0.3524383614632962,
+      "single_angle_deg": 0.0,
+      "stages": [],
+      "status": "v12_original_ml_top30_softmatch"
+    }
+  },
+  "max_bearing_residual": 0.1,
+  "min_bin_power": 0.0,
+  "min_crossing_angle_deg": 1.0,
+  "npu_every": 1,
+  "pha_integrity": "slot_format_only_no_hardware_validity",
+  "phase_sign": 1,
+  "pl_version": 0,
+  "preprocessing": {
+    "adc_dc_applied": false,
+    "adc_dc_removed_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fft_payload_preprocessing": "unknown",
+    "ml_applied": false,
+    "ml_backend": "none",
+    "ml_processing_ms": 0.0,
+    "ml_retained_samples": 4096,
+    "ml_startup_samples": 0,
+    "ml_window": "none"
+  },
+  "processing_mode": "position",
+  "raw_validation": true,
+  "rf_hz": 445000000.0,
+  "rounds": 4,
+  "run_id": "independent_review",
+  "sample_rate_hz": 100000000.0,
+  "schema": 1,
+  "search": {
+    "count": 11,
+    "start": -60.0,
+    "step": 12.0
+  },
+  "selected_bins": [
+    11,
+    17
+  ],
+  "seq": 1,
+  "session": "independent_review",
+  "source": "aoa",
+  "status": "ok",
+  "tcp_host": "192.168.10.50",
+  "tcp_port": 7,
+  "type": "aoa",
+  "v12": {
+    "joint": {
+      "angle_deg": 12.0,
+      "angles": [
+        0.0,
+        12.0,
+        24.0
+      ],
+      "main_match": 0.14877758951017153,
+      "model_paths": 3,
+      "path_index": 1,
+      "pool_counts": [
+        11,
+        30,
+        30
+      ],
+      "residual_ratio": 0.03657932267732969,
+      "score": 0.3524383614632962,
+      "secondary": {
+        "angle_deg": -3.0,
+        "display_only": true,
+        "error_deg": 3.0,
+        "ml_angle_deg": 0.0,
+        "score": 0.8720115447285738
+      },
+      "top30_rank": 1,
+      "valid": true
+    },
+    "localization": {
+      "candidates": [
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            12.0,
+            12.0
+          ],
+          "bearing_deg": null,
+          "crossing_deg": 0.0,
+          "geometry_condition": null,
+          "id": "C1",
+          "paths": [
+            0,
+            0
+          ],
+          "ranges_m": [
+            null,
+            null
+          ],
+          "status": "near_parallel",
+          "valid": false,
+          "x": null,
+          "y": null
+        },
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            12.0,
+            24.0
+          ],
+          "bearing_deg": null,
+          "crossing_deg": 12.0,
+          "geometry_condition": 9.514364454222585,
+          "id": "C2",
+          "paths": [
+            0,
+            1
+          ],
+          "ranges_m": [
+            -7.245036506991561,
+            -7.768321781004378
+          ],
+          "status": "behind_station",
+          "valid": false,
+          "x": null,
+          "y": null
+        },
+        {
+          "angle_error_deg": 6.209894747405897,
+          "angles_deg": [
+            24.0,
+            12.0
+          ],
+          "bearing_deg": 18.209894747405897,
+          "crossing_deg": 12.0,
+          "geometry_condition": 9.514364454222585,
+          "id": "C3",
+          "paths": [
+            1,
+            0
+          ],
+          "ranges_m": [
+            7.768321781004378,
+            7.245036506991561
+          ],
+          "status": "ok",
+          "valid": true,
+          "x": 2.362994456871675,
+          "y": 7.100048409875962
+        },
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            24.0,
+            24.0
+          ],
+          "bearing_deg": null,
+          "crossing_deg": 0.0,
+          "geometry_condition": null,
+          "id": "C4",
+          "paths": [
+            1,
+            1
+          ],
+          "ranges_m": [
+            null,
+            null
+          ],
+          "status": "near_parallel",
+          "valid": false,
+          "x": null,
+          "y": null
+        }
+      ],
+      "reference_angle_deg": 12.0,
+      "selected_id": "C3"
+    },
+    "scan": {
+      "angle_deg": 17.789183480267212,
+      "angles_deg": [],
+      "coarse_angle_deg": 18.0,
+      "local_angle_deg": 17.8,
+      "model": "uniform_full_complex",
+      "relative_db": [],
+      "secondary_angle_deg": -3.0,
+      "valid": true
+    },
+    "version": "1.2"
+  },
+  "written_slots": 0
+}

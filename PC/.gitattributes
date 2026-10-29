@@ -1,0 +1,2 @@
+# Preserve source package bytes and SHA-256 across platforms.
+* -text

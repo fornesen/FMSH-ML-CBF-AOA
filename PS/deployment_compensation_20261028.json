@@ -1,0 +1,23 @@
+{
+  "version": "1.2",
+  "source_revision": "b6a39cc1c6f7bde477addc8da708af17cfaa97dd",
+  "compiled_stage": "/root/aoa_system/V1.2/sources/aoa_update_20261028_201834",
+  "compensation_scope": "445MHz endpoint-equivalent",
+  "algorithm": {
+    "position": "two_triad_ml_energy",
+    "angle": "original_ml_top30_softmatch_v1.2"
+  },
+  "archive_default": false,
+  "file_sha256": {
+    "bin/icraft_aoa_ml3": "70994eb77a0bd5b19c78e703e922b3ed77623e3d8dd0919ea8cc814a46d6831b",
+    "bin/icraft_npu_yolo": "969d74dcae44b12630ed435daadcd8651e3469fe405bb1f95a67bf4ca71d12e1",
+    "pl/aoa_console.bin": "587baf73244a7173af007cbf1b1d57b8c85fbb7db6b09cc2ef99f0da92638458",
+    "config/array.csv": "ba81f2d01e8c39a2d022797bd2ee93f705088b55f3498d430e6d257a54ddd5ed",
+    "config/channel_compensation.csv": "cc97b0e58c4527f987fe67433ff4e57955867f6c9ab375b56403c4000139c444",
+    "config/job.json": "3506d5dd3d6cb1f843f85c04aafd6bd8860e860fce81230f1ef9adbeeb898a4a",
+    "scripts/run_board.py": "f0213b95c695c04fda5521a046c239a28e621cbf294ce308d3a12735062f3223"
+  },
+  "previous_aoa_sha256": "dc8a5ab829831597a9539fac4eaa7aadea98011e99901c578eaf9790c833401c",
+  "raw_storage": "PC only; bounded board RAM",
+  "activated_unix_s": 1773393914.3833983
+}

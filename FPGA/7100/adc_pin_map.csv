@@ -1,0 +1,85 @@
+﻿channel,port,package_pin,via,direction
+0,adc_data_0[0],AG27,FMC_LA05_N,input
+0,adc_data_0[1],AG26,FMC_LA05_P,input
+0,adc_data_0[2],AA28,FMC_LA15_N,input
+0,adc_data_0[3],AA27,FMC_LA15_P,input
+0,adc_data_0[4],AG30,FMC_LA08_N,input
+0,adc_data_0[5],AF30,FMC_LA08_P,input
+0,adc_data_0[6],AF27,FMC_LA10_N,input
+0,adc_data_0[7],AE27,FMC_LA10_P,input
+0,adc_data_0[8],AG29,FMC_LA09_N,input
+0,adc_data_0[9],AF29,FMC_LA09_P,input
+0,adc_data_0[10],AD26,FMC_LA12_N,input
+0,adc_data_0[11],AC26,FMC_LA12_P,input
+0,adc_clk[0],AA29,FMC_LA11_N,output
+0,adc_dco[0],Y28,FMC_LA11_P,input
+1,adc_data_1[0],AK28,FMC_LA02_N,input
+1,adc_data_1[1],AK27,FMC_LA02_P,input
+1,adc_data_1[2],AC27,FMC_LA01_N,input
+1,adc_data_1[3],AB27,FMC_LA01_P,input
+1,adc_data_1[4],AH27,FMC_LA04_N,input
+1,adc_data_1[5],AH26,FMC_LA04_P,input
+1,adc_data_1[6],AJ29,FMC_LA03_N,input
+1,adc_data_1[7],AJ28,FMC_LA03_P,input
+1,adc_data_1[8],AE30,FMC_LA07_N,input
+1,adc_data_1[9],AD30,FMC_LA07_P,input
+1,adc_data_1[10],AK30,FMC_LA06_N,input
+1,adc_data_1[11],AJ30,FMC_LA06_P,input
+1,adc_clk[1],U27,FMC_LA00_N,output
+1,adc_dco[1],U26,FMC_LA00_P,input
+2,adc_data_2[0],T30,FMC_LA26_P,input
+2,adc_data_2[1],U30,FMC_LA26_N,input
+2,adc_data_2[2],T29,FMC_LA24_P,input
+2,adc_data_2[3],U29,FMC_LA24_N,input
+2,adc_data_2[4],R27,FMC_LA25_P,input
+2,adc_data_2[5],T27,FMC_LA25_N,input
+2,adc_data_2[6],N26,FMC_LA28_P,input
+2,adc_data_2[7],N27,FMC_LA28_N,input
+2,adc_data_2[8],P23,FMC_LA29_P,input
+2,adc_data_2[9],P24,FMC_LA29_N,input
+2,adc_data_2[10],N28,FMC_LA30_P,input
+2,adc_data_2[11],P28,FMC_LA30_N,input
+2,adc_clk[2],V28,FMC_LA21_P,output
+2,adc_dco[2],V29,FMC_LA21_N,input
+3,adc_data_3[0],Y30,FMC_LA20_P,input
+3,adc_data_3[1],AA30,FMC_LA20_N,input
+3,adc_data_3[2],R25,FMC_LA18_P,input
+3,adc_data_3[3],R26,FMC_LA18_N,input
+3,adc_data_3[4],W25,FMC_LA23_P,input
+3,adc_data_3[5],W26,FMC_LA23_N,input
+3,adc_data_3[6],V27,FMC_LA22_P,input
+3,adc_data_3[7],W28,FMC_LA22_N,input
+3,adc_data_3[8],W29,FMC_LA19_P,input
+3,adc_data_3[9],W30,FMC_LA19_N,input
+3,adc_data_3[10],T24,FMC_LA27_P,input
+3,adc_data_3[11],T25,FMC_LA27_N,input
+3,adc_clk[3],AE28,FMC_LA17_P,output
+3,adc_dco[3],AF28,FMC_LA17_N,input
+4,adc_data_4[0],AK12,40PIN photo3/4 mirrored,input
+4,adc_data_4[1],AK13,40PIN photo3/4 mirrored,input
+4,adc_data_4[2],AH13,40PIN photo3/4 mirrored,input
+4,adc_data_4[3],AH14,40PIN photo3/4 mirrored,input
+4,adc_data_4[4],AJ13,40PIN photo3/4 mirrored,input
+4,adc_data_4[5],AJ14,40PIN photo3/4 mirrored,input
+4,adc_data_4[6],AG14,40PIN photo3/4 mirrored,input
+4,adc_data_4[7],AF14,40PIN photo3/4 mirrored,input
+4,adc_data_4[8],AK15,40PIN photo3/4 mirrored,input
+4,adc_data_4[9],AJ15,40PIN photo3/4 mirrored,input
+4,adc_data_4[10],AG15,40PIN photo3/4 mirrored,input
+4,adc_data_4[11],AF15,40PIN photo3/4 mirrored,input
+4,adc_clk[4],AF12,40PIN photo3/4 mirrored,output
+4,adc_dco[4],AE12,40PIN photo3/4 mirrored,input
+5,adc_data_5[0],AC13,40PIN photo3/4 mirrored,input
+5,adc_data_5[1],AC14,40PIN photo3/4 mirrored,input
+5,adc_data_5[2],AD13,40PIN photo3/4 mirrored,input
+5,adc_data_5[3],AD14,40PIN photo3/4 mirrored,input
+5,adc_data_5[4],AD15,40PIN photo3/4 mirrored,input
+5,adc_data_5[5],AD16,40PIN photo3/4 mirrored,input
+5,adc_data_5[6],AF13,40PIN photo3/4 mirrored,input
+5,adc_data_5[7],AE13,40PIN photo3/4 mirrored,input
+5,adc_data_5[8],AE15,40PIN photo3/4 mirrored,input
+5,adc_data_5[9],AE16,40PIN photo3/4 mirrored,input
+5,adc_data_5[10],AH12,40PIN photo3/4 mirrored,input
+5,adc_data_5[11],AG12,40PIN photo3/4 mirrored,input
+5,adc_clk[5],AC12,40PIN photo3/4 mirrored,output
+5,adc_dco[5],AB12,40PIN photo3/4 mirrored,input

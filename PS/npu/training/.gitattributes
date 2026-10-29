@@ -1,0 +1,2 @@
+# Keep frozen source hashes stable on Windows checkouts.
+* text eol=lf

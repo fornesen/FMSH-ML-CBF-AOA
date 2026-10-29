@@ -1,0 +1,339 @@
+{
+  "adc_bits": 16,
+  "adc_encoding": "offset-binary",
+  "analysis_ms": 0.0,
+  "antennas": [
+    [
+      -1.0,
+      0.0
+    ],
+    [
+      -1.0,
+      0.0
+    ],
+    [
+      -1.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0
+    ]
+  ],
+  "baseband_sample_rate_hz": 25000000.0,
+  "beam_weights_verified": false,
+  "capture_last_round_ms": 0.0,
+  "capture_mode": "fft_file",
+  "capture_ms": 0.0,
+  "centres": [
+    [
+      -1.0,
+      0.0
+    ],
+    [
+      1.0,
+      0.0
+    ]
+  ],
+  "compact_results": false,
+  "complete": true,
+  "covariance_concentration": 1.0,
+  "dds_hz": 12500000.0,
+  "direction_frames": 4,
+  "direction_method": "normalized_covariance_principal_vector",
+  "direction_round": 3,
+  "direction_rounds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "error": "",
+  "groups": [
+    {
+      "ambiguous": false,
+      "channels": [
+        0,
+        1,
+        2
+      ],
+      "condition": null,
+      "energy": 1.0,
+      "has_best": true,
+      "id": 0,
+      "paths": [
+        {
+          "active": true,
+          "amplitude_rms": 1.0,
+          "angle_deg": 10.0,
+          "id": 0,
+          "relative_power_db": 0.0
+        },
+        {
+          "active": true,
+          "amplitude_rms": 1.0,
+          "angle_deg": 60.0,
+          "id": 1,
+          "relative_power_db": 0.0
+        }
+      ],
+      "residual_ratio": 0.01
+    },
+    {
+      "ambiguous": false,
+      "channels": [
+        3,
+        4,
+        5
+      ],
+      "condition": null,
+      "energy": 1.0,
+      "has_best": true,
+      "id": 1,
+      "paths": [
+        {
+          "active": true,
+          "amplitude_rms": 1.0,
+          "angle_deg": -40.0,
+          "id": 0,
+          "relative_power_db": 0.0
+        },
+        {
+          "active": true,
+          "amplitude_rms": 1.0,
+          "angle_deg": 0.0,
+          "id": 1,
+          "relative_power_db": 0.0
+        }
+      ],
+      "residual_ratio": 0.01
+    }
+  ],
+  "guard_checked": false,
+  "guard_ok": false,
+  "handoff": "disabled",
+  "joint": {
+    "ambiguous": false,
+    "channels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "condition": null,
+    "condition_definition": "Frobenius norm(A)*norm(pinv(A))",
+    "has_best": false,
+    "model": "far_field_ml",
+    "path_count": 3,
+    "paths": [],
+    "profile": {
+      "angles_deg": [],
+      "definition": "selected-order original exhaustive ML profile; board computed",
+      "relative_db": [],
+      "scale_definition": "10log10(min J / profiled J); numerical floor J/E=1e-12; clamp -80..0"
+    },
+    "reference_xy": [
+      -5.551115123125783e-17,
+      0.0
+    ],
+    "residual_ratio": null,
+    "selection": {
+      "accepted": false,
+      "main_match": 0.0,
+      "method": "original_ml_top30_softmatch_v1.2",
+      "path_index": null,
+      "selected_score": 0.0,
+      "status": "no_candidate"
+    }
+  },
+  "max_bearing_residual": 0.1,
+  "min_bin_power": 0.0,
+  "min_crossing_angle_deg": 1.0,
+  "npu_every": 1,
+  "pha_integrity": "slot_format_only_no_hardware_validity",
+  "phase_sign": 1,
+  "pl_version": 0,
+  "preprocessing": {
+    "adc_dc_applied": false,
+    "adc_dc_removed_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fft_payload_preprocessing": "unknown",
+    "ml_applied": false,
+    "ml_backend": "none",
+    "ml_processing_ms": 0.0,
+    "ml_retained_samples": 4096,
+    "ml_startup_samples": 0,
+    "ml_window": "none"
+  },
+  "processing_mode": "position",
+  "raw_validation": false,
+  "rf_hz": 433000000.0,
+  "rounds": 4,
+  "run_id": "independent_review",
+  "sample_rate_hz": 100000000.0,
+  "schema": 1,
+  "search": {
+    "count": 11,
+    "start": -60.0,
+    "step": 12.0
+  },
+  "selected_bins": [],
+  "seq": 1,
+  "session": "independent_review",
+  "source": "aoa",
+  "status": "no_signal",
+  "tcp_host": "192.168.10.50",
+  "tcp_port": 7,
+  "type": "aoa",
+  "v12": {
+    "joint": {
+      "angle_deg": null,
+      "angles": [],
+      "main_match": 0.0,
+      "model_paths": 3,
+      "path_index": null,
+      "pool_counts": [
+        0,
+        0,
+        0
+      ],
+      "residual_ratio": null,
+      "score": 0.0,
+      "secondary": {
+        "angle_deg": null,
+        "display_only": true,
+        "error_deg": null,
+        "ml_angle_deg": null,
+        "score": null
+      },
+      "top30_rank": null,
+      "valid": false
+    },
+    "localization": {
+      "candidates": [
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            10.0,
+            -40.0
+          ],
+          "bearing_deg": -18.334490435744232,
+          "crossing_deg": 50.0,
+          "geometry_condition": 2.144506920509559,
+          "id": "C1",
+          "paths": [
+            0,
+            0
+          ],
+          "ranges_m": [
+            2.0000000000000004,
+            2.5711504387461575
+          ],
+          "status": "ok",
+          "valid": true,
+          "x": -0.6527036446661393,
+          "y": 1.9696155060244165
+        },
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            10.0,
+            0.0
+          ],
+          "bearing_deg": 5.038368773297492,
+          "crossing_deg": 10.0,
+          "geometry_condition": 11.430052302761345,
+          "id": "C2",
+          "paths": [
+            0,
+            1
+          ],
+          "ranges_m": [
+            11.517540966287267,
+            11.34256363923542
+          ],
+          "status": "ok",
+          "valid": true,
+          "x": 0.9999999999999998,
+          "y": 11.342563639235419
+        },
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            60.0,
+            -40.0
+          ],
+          "bearing_deg": 24.0595956091204,
+          "crossing_deg": 80.00000000000001,
+          "geometry_condition": 1.1917535925942095,
+          "id": "C3",
+          "paths": [
+            1,
+            0
+          ],
+          "ranges_m": [
+            1.555723826860412,
+            1.0154266118857451
+          ],
+          "status": "ok",
+          "valid": true,
+          "x": 0.3472963553338604,
+          "y": 0.7778619134302063
+        },
+        {
+          "angle_error_deg": null,
+          "angles_deg": [
+            60.0,
+            0.0
+          ],
+          "bearing_deg": 40.8933946491309,
+          "crossing_deg": 59.99999999999999,
+          "geometry_condition": 1.7320508075688774,
+          "id": "C4",
+          "paths": [
+            1,
+            1
+          ],
+          "ranges_m": [
+            2.3094010767585034,
+            1.154700538379252
+          ],
+          "status": "ok",
+          "valid": true,
+          "x": 1.0,
+          "y": 1.154700538379252
+        }
+      ],
+      "reference_angle_deg": null,
+      "selected_id": null
+    },
+    "scan": {
+      "angle_deg": null,
+      "angles_deg": [],
+      "coarse_angle_deg": null,
+      "local_angle_deg": null,
+      "model": "uniform_full_complex",
+      "relative_db": [],
+      "secondary_angle_deg": null,
+      "valid": false
+    },
+    "version": "1.2"
+  },
+  "written_slots": 0
+}

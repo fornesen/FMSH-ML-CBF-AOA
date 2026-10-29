@@ -1,0 +1,17 @@
+[Unit]
+Description=AOA V2.0 acquisition and NPU service
+Requires=aoa-pl.service
+Wants=network-online.target
+After=aoa-pl.service rc-local.service network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/aoa_system/V2.0
+ExecStart=/root/aoa_system/V2.0/python.sh -u /root/aoa_system/V2.0/runtime/check_runtime.py run
+ExecStop=/root/aoa_system/V2.0/python.sh /root/aoa_system/V2.0/runtime/service.py stop
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=125
+
+[Install]
+WantedBy=multi-user.target

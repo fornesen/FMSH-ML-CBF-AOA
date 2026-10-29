@@ -1,0 +1,7 @@
+set_property PACKAGE_PIN AF18 [get_ports rstn]
+set_property IOSTANDARD LVCMOS33 [get_ports rstn]
+set_property PULLUP true [get_ports rstn]
+set_property PACKAGE_PIN AD18 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
+set_property PACKAGE_PIN W21 [get_ports fan_pwm]
+set_property IOSTANDARD LVCMOS33 [get_ports fan_pwm]

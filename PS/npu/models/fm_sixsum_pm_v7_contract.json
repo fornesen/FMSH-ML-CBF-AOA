@@ -1,0 +1,80 @@
+{
+  "classes": [
+    "FM",
+    "AM",
+    "CW",
+    "noise",
+    "OOK",
+    "PM"
+  ],
+  "class_count": 6,
+  "output_shape": [
+    1,
+    6
+  ],
+  "logical_inputs_nhwc": [
+    [
+      1,
+      64,
+      640,
+      4
+    ],
+    [
+      1,
+      1,
+      640,
+      4
+    ],
+    [
+      1,
+      1,
+      48,
+      4
+    ]
+  ],
+  "model_json": "models/fm_sixsum_pm_v7_ZG.json",
+  "model_raw": "models/fm_sixsum_pm_v7_ZG.raw",
+  "amplitude_mode": "batch",
+  "amplitude_target_rms": 0.25,
+  "amplitude_max_gain": 256,
+  "nominal_rf_hz": 445000000,
+  "pm_frequency_bands_hz": [
+    [
+      2000,
+      8000
+    ],
+    [
+      15000,
+      25000
+    ]
+  ],
+  "pm_phase_deviation_degrees": [
+    60,
+    120
+  ],
+  "general_pm_fm_blind_identification_supported": false,
+  "compiled_precision": "fp16",
+  "validation_quantization_gate": {
+    "accuracy_drop_limit": 0.02,
+    "pm_recall_drop_limit": 0.03,
+    "accuracy_drop": 0.00068493150684934,
+    "pm_recall_drop": 0.0,
+    "passed": true,
+    "pm_band_recall_drop_limit": 0.03
+  },
+  "legacy_five_class_regression": {
+    "float_baseline": 0.9153333333333333,
+    "candidate": 0.856,
+    "drop_limit": 0.03,
+    "passed": false
+  },
+  "measured_pm_offline_smoke_passed": true,
+  "measured_pm_offline_smoke_batches": 3,
+  "deployment_acceptance_passed": false,
+  "icraft_hostbackend_verified": true,
+  "npu_board_executed": false,
+  "live_deployment_changed": false,
+  "status": "local_candidate_pending_legacy_regression_and_board_validation",
+  "model_json_sha256": "46fd1f6eb91aac9cc1c2f3ce9a6c457e90e6ce9a3df333573ecfb2f06dceb936",
+  "model_raw_sha256": "38a64324e61b13ada2e74d563e2adbd7ae0b333d59bb55ee664c5190c7caace0"
+}

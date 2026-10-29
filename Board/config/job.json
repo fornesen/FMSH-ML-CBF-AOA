@@ -1,0 +1,67 @@
+{
+  "tag": "moving_session_001",
+  "array_xy_m": [
+    [
+      -1.2823613348729794,
+      0.0
+    ],
+    [
+      -0.9361806674364898,
+      0.0
+    ],
+    [
+      -0.5900000000000001,
+      0.0
+    ],
+    [
+      0.5900000000000001,
+      0.0
+    ],
+    [
+      0.9361806674364898,
+      0.0
+    ],
+    [
+      1.2823613348729794,
+      0.0
+    ]
+  ],
+  "runtime_base": ".",
+  "interval_ms": 0,
+  "acquisition_mode": "locate",
+  "sim_tagged_start": false,
+  "source_kind": "zynq7100_physical_adc",
+  "processing_mode": "position",
+  "joint_paths": 3,
+  "elf_sha256": {
+    "icraft_aoa_ml3": "29e72a9a18bf0fece6effbe553e75bc338edadc8bd41ccbb45b7ec2d8ec285b4",
+    "icraft_npu_yolo": "5e175e9d14fc10b356ca1f755160036fc5f4218ea1d92c29bcff4d4176a99a43"
+  },
+  "project_root": ".",
+  "bin_dir": "bin",
+  "results_subdir": "runs",
+  "tcp_host": "192.168.10.50",
+  "tcp_port": 7,
+  "adc_bits": 12,
+  "adc_encoding": "twos-complement",
+  "observe_waveform": true,
+  "observe_spectrum": true,
+  "rf_hz": 445000000,
+  "band_min_hz": -550000,
+  "band_max_hz": -450000,
+  "adc_remove_dc": true,
+  "ml_startup_samples": 64,
+  "ml_fft_window": "hann",
+  "beam_auto_start": true,
+  "record_raw": false,
+  "scan_verify": false,
+  "scan_max_checks": 2,
+  "scan_candidate_gap_db": 1.5,
+  "scan_min_snr_db": 8,
+  "archive_gzip_level": 0,
+  "scan_ml_weight": 0.2,
+  "compensation_file": "config/channel_compensation.csv",
+  "npu_model_json": "models/fm_sixsum_fm_pm_v8_ZG.json",
+  "npu_model_raw": "models/fm_sixsum_fm_pm_v8_ZG.raw",
+  "compensation_bank": "config/channel_compensation_band.json"
+}

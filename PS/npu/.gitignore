@@ -1,0 +1,12 @@
+build/
+results/
+verification/
+models/*
+!models/fm_sixsum_ook_v6_contract.json
+tools/host-deps/
+deployment*/
+__pycache__/
+*.pyc
+*.ftmp
+
+!models/fm_sixsum_pm_v7_contract.json

@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/font-0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/font-1.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Chakra Petch';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/font-2.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/font-3.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/font-4.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Silkscreen';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/font-5.ttf) format('truetype');
+}
+/* 中文采用本机已安装的思源黑体体系；拉丁字符仍由 Silkscreen 显示。 */
+@font-face {
+  font-family: 'AOA Chinese';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: local('Noto Sans SC');
+  unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FF00-FFEF, U+20000-323AF;
+}
