@@ -207,4 +207,4 @@ tests/            当前有效的跨模块测试
 - [NPU 识别与训练](Documentation/NPU.md)
 - [调试归档和离线回放](Documentation/RECORDING_AND_REPLAY.md)
 
-`package_release.py` 生成唯一完整部署包。使用说明集中于 `Documentation/`；内部验收报告、历史实验、私人环境快照及独立文件指纹清单不属于公开项目。
+`package_release.py` 生成唯一完整部署包。使用说明集中于 `Documentation/`。
